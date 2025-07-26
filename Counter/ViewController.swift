@@ -9,17 +9,17 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    let dateFormatter: DateFormatter = {
+    private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "[dd.MM.yyyy HH:mm:ss]: "
         return formatter
     }()
     
-    @IBOutlet weak var logTextView: UITextView!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var decreaseButton: UIButton!
-    @IBOutlet weak var increaseButton: UIButton!
-    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak private var logTextView: UITextView!
+    @IBOutlet weak private var deleteButton: UIButton!
+    @IBOutlet weak private var decreaseButton: UIButton!
+    @IBOutlet weak private var increaseButton: UIButton!
+    @IBOutlet weak private var counterLabel: UILabel!
     private var counter: Int = 0
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ final class ViewController: UIViewController {
         counterLabel.text = "0"
         log("значение сброшено")
     }
-    @IBAction func decreaseCounter(_ sender: Any) {
+    @IBAction private func decreaseCounter(_ sender: Any) {
         if counter > 0 {
             counter -= 1
             counterLabel.text = String(counter)
@@ -51,7 +51,7 @@ final class ViewController: UIViewController {
             log("попытка уменьшить значение счетчика ниже 0")
         }
     }
-    @IBAction func increaseCounter(_ sender: Any) {
+    @IBAction private func increaseCounter(_ sender: Any) {
         counter += 1
         counterLabel.text = String(counter)
         log("значение изменено на +1")
